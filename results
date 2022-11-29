@@ -1,0 +1,237 @@
+Percentile 50.000000: 87.293508ms
+Percentile 90.000000: 107.559079ms
+Percentile 95.000000: 110.543807ms
+Percentile 99.000000: 117.258811ms
+Percentile 99.900000: 123.986608ms
+MAX CONNS PER HOST: 10
+TOTAL Requests: 10000
+TOTAL Duration: 7.546359731s
+
+=========================================
+Percentile 50.000000: 62.888919ms
+Percentile 90.000000: 138.082041ms
+Percentile 95.000000: 145.384006ms
+Percentile 99.000000: 154.80511ms
+Percentile 99.900000: 166.784094ms
+MAX CONNS PER HOST: 10
+TOTAL Requests: 10000
+TOTAL Duration: 8.385583855s
+
+=========================================
+Percentile 50.000000: 176.599797ms
+Percentile 90.000000: 442.799219ms
+Percentile 95.000000: 468.029374ms
+Percentile 99.000000: 515.499903ms
+Percentile 99.900000: 531.537636ms
+MAX CONNS PER HOST: 1
+TOTAL Requests: 10000
+TOTAL Duration: 24.329814438s
+
+=========================================
+Percentile 50.000000: 168.803782ms
+Percentile 90.000000: 452.604113ms
+Percentile 95.000000: 470.452022ms
+Percentile 99.000000: 511.253646ms
+Percentile 99.900000: 547.419249ms
+MAX CONNS PER HOST: 1
+TOTAL Requests: 10000
+TOTAL Duration: 23.09902467s
+
+=========================================
+Percentile 50.000000: 167.741789ms
+Percentile 90.000000: 197.008828ms
+Percentile 95.000000: 205.802125ms
+Percentile 99.000000: 254.332982ms
+Percentile 99.900000: 260.054529ms
+MAX CONNS PER HOST: 1
+TOTAL Requests: 10000
+TOTAL Duration: 16.490763569s
+AVG QPS: 606.4000589274351
+
+=========================================
+Percentile 50.000000: 76.472891ms
+Percentile 90.000000: 127.011646ms
+Percentile 95.000000: 142.957027ms
+Percentile 99.000000: 182.833674ms
+Percentile 99.900000: 231.561256ms
+MAX CONNS PER HOST: 50
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 7.951628382s
+AVG QPS: 1257.6040427941618
+
+=========================================
+Percentile 50.000000: 57.558545ms
+Percentile 90.000000: 77.310119ms
+Percentile 95.000000: 120.987623ms
+Percentile 99.000000: 136.323488ms
+Percentile 99.900000: 159.029797ms
+MAX CONNS PER HOST: 10
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 6.379635065s
+AVG QPS: 1567.4877791775382
+
+=========================================
+Percentile 50.000000: 109.348116ms
+Percentile 90.000000: 131.729746ms
+Percentile 95.000000: 139.151439ms
+Percentile 99.000000: 181.266241ms
+Percentile 99.900000: 197.580006ms
+MAX CONNS PER HOST: 10
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 9.164330319s
+AVG QPS: 1091.1872064745903
+
+=========================================
+Percentile 50.000000: 43.506482ms
+Percentile 90.000000: 50.187592ms
+Percentile 95.000000: 52.65591ms
+Percentile 99.000000: 58.06665ms
+Percentile 99.900000: 62.690897ms
+MAX CONNS PER HOST: 10
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 4.426939052s
+AVG QPS: 2258.8971482411093
+
+
+// With Lat Random
+=========================================
+Percentile 50.000000: 45.183553ms
+Percentile 90.000000: 51.752448ms
+Percentile 95.000000: 54.631986ms
+Percentile 99.000000: 60.196043ms
+Percentile 99.900000: 65.48792ms
+MAX CONNS PER HOST: 10
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 4.624363307s
+AVG QPS: 2162.459853632776
+
+=========================================
+With ElasticSearch
+
+Percentile 50.000000: 73.743619ms
+Percentile 90.000000: 101.515497ms
+Percentile 95.000000: 107.382139ms
+Percentile 99.000000: 115.391511ms
+Percentile 99.900000: 120.60962ms
+MAX CONNS PER HOST: 10
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 7.827816648s
+AVG QPS: 1277.4954306773386
+
+
+=========================================
+Search With Database
+Percentile 50.000000: 4.457993ms
+Percentile 90.000000: 8.321691ms
+Percentile 95.000000: 9.861664ms
+Percentile 99.000000: 13.526583ms
+Percentile 99.900000: 20.512044ms
+MAX CONNS: 50
+Num Threads: 20
+TOTAL Requests: 2000
+TOTAL Duration: 510.796053ms
+AVG QPS: 3915.4570366267103
+
+=========================================
+Search With Database
+Percentile 50.000000: 22.599779ms
+Percentile 90.000000: 51.579028ms
+Percentile 95.000000: 60.370096ms
+Percentile 99.000000: 80.186753ms
+Percentile 99.900000: 119.256549ms
+MAX CONNS: 100
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 2.594353834s
+AVG QPS: 3854.524340105876
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 8.579528ms
+Percentile 90.000000: 35.211198ms
+Percentile 95.000000: 49.458978ms
+Percentile 99.000000: 80.67778ms
+Percentile 99.900000: 142.201764ms
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 1.557187778s
+AVG QPS: 6421.83308993323
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 6.770269ms
+Percentile 90.000000: 35.226833ms
+Percentile 95.000000: 53.158328ms
+Percentile 99.000000: 100.860224ms
+Percentile 99.900000: 133.669962ms
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 1.580025788s
+AVG QPS: 6329.010624983546
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 4.562743ms
+Percentile 90.000000: 28.332939ms
+Percentile 95.000000: 36.899011ms
+Percentile 99.000000: 58.496309ms
+Percentile 99.900000: 88.893846ms
+Num Threads: 100
+TOTAL Requests: 50000
+TOTAL Duration: 5.638970673s
+AVG QPS: 8866.866472529357
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 8.842936ms
+Percentile 90.000000: 37.827915ms
+Percentile 95.000000: 51.030726ms
+Percentile 99.000000: 86.836159ms
+Percentile 99.900000: 128.001804ms
+Num Threads: 100
+TOTAL Requests: 50000
+TOTAL Duration: 8.177431642s
+AVG QPS: 6114.389234780717
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 4.344059ms
+Percentile 90.000000: 28.993539ms
+Percentile 95.000000: 39.961837ms
+Percentile 99.000000: 69.897903ms
+Percentile 99.900000: 96.974878ms
+Num Threads: 100
+TOTAL Requests: 50000
+TOTAL Duration: 5.79128186s
+AVG QPS: 8633.667158448407
+
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 3.613373ms
+Percentile 90.000000: 26.028193ms
+Percentile 95.000000: 34.777375ms
+Percentile 99.000000: 55.989023ms
+Percentile 99.900000: 86.261602ms
+Num Threads: 100
+TOTAL Requests: 50000
+TOTAL Duration: 5.120785763s
+AVG QPS: 9764.126505989116
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 6.685873ms
+Percentile 90.000000: 31.840574ms
+Percentile 95.000000: 45.508996ms
+Percentile 99.000000: 80.820868ms
+Percentile 99.900000: 130.865492ms
+Num Threads: 100
+TOTAL Requests: 100000
+TOTAL Duration: 13.169642299s
+AVG QPS: 7593.220660791465
