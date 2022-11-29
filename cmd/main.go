@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bench_elastic/pb"
 	"bytes"
 	"encoding/csv"
 	"encoding/json"
@@ -220,7 +221,20 @@ func writeDataToMemcached(db *sqlx.DB, client *memcache.Client) {
 	defer p.Finish()
 
 	for k, v := range shopMap {
-		data, err := json.Marshal(v)
+		pbShops := make([]*pb.Shop, 0, len(v))
+		for _, s := range v {
+			pbShops = append(pbShops, &pb.Shop{
+				Id:  s.ID,
+				Lat: s.Lat,
+				Lon: s.Lon,
+			})
+		}
+
+		entry := pb.ShopEntry{
+			Shops: pbShops,
+		}
+
+		data, err := entry.Marshal()
 		if err != nil {
 			panic(err)
 		}
@@ -288,8 +302,8 @@ func getESClient(maxConnsPerHost int) (*elasticsearch.Client, func()) {
 		IdleConnTimeout:       90 * time.Second,
 		TLSHandshakeTimeout:   10 * time.Second,
 		ExpectContinueTimeout: 1 * time.Second,
-		MaxConnsPerHost:       maxConnsPerHost,
-		MaxIdleConnsPerHost:   maxConnsPerHost,
+		MaxConnsPerHost:       maxConnsPerHost, // default = 2
+		MaxIdleConnsPerHost:   maxConnsPerHost, // default = 2
 	}
 
 	client, err := elasticsearch.NewClient(elasticsearch.Config{
@@ -449,10 +463,19 @@ func searchWithMemcache(client *memcache.Client) {
 			continue
 		}
 
-		var modelList []ShopModel
-		err = json.Unmarshal(resp.Data, &modelList)
+		var entry pb.ShopEntry
+		err = entry.Unmarshal(resp.Data)
 		if err != nil {
 			panic(err)
+		}
+
+		modelList := make([]ShopModel, 0, len(entry.Shops))
+		for _, s := range entry.Shops {
+			modelList = append(modelList, ShopModel{
+				ID:  s.Id,
+				Lat: s.Lat,
+				Lon: s.Lon,
+			})
 		}
 		result = append(result, modelList...)
 	}
@@ -536,7 +559,7 @@ func doSearchUsingDB(db *sqlx.DB) {
 
 func doSearchUsingMemcache(client *memcache.Client) {
 	const numThreads = 50
-	const numLoops = 100
+	const numLoops = 5000
 
 	start := time.Now()
 

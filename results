@@ -18,6 +18,18 @@ TOTAL Requests: 10000
 TOTAL Duration: 8.385583855s
 
 =========================================
+Percentile 50.000000: 99.618524ms
+Percentile 90.000000: 113.040013ms
+Percentile 95.000000: 114.822117ms
+Percentile 99.000000: 123.305322ms
+Percentile 99.900000: 129.088048ms
+MAX CONNS PER HOST: 2
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 10.196173684s
+AVG QPS: 980.7600684256842
+
+=========================================
 Percentile 50.000000: 176.599797ms
 Percentile 90.000000: 442.799219ms
 Percentile 95.000000: 468.029374ms
@@ -249,3 +261,85 @@ Num Threads: 100
 TOTAL Requests: 100000
 TOTAL Duration: 13.169642299s
 AVG QPS: 7593.220660791465
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 10.078262ms
+Percentile 90.000000: 30.444819ms
+Percentile 95.000000: 41.141155ms
+Percentile 99.000000: 74.71268ms
+Percentile 99.900000: 116.222114ms
+Num Threads: 500
+TOTAL Requests: 500000
+TOTAL Duration: 14.039696394s
+AVG QPS: 35613.30572744292
+
+========================================
+Search With Memcache
+Percentile 50.000000: 3.262392ms
+Percentile 90.000000: 17.876378ms
+Percentile 95.000000: 23.745175ms
+Percentile 99.000000: 38.423483ms
+Percentile 99.900000: 61.991751ms
+Num Threads: 200
+TOTAL Requests: 200000
+TOTAL Duration: 6.813023565s
+AVG QPS: 29355.542086694662
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 611.799µs
+Percentile 90.000000: 4.704329ms
+Percentile 95.000000: 6.894292ms
+Percentile 99.000000: 12.257205ms
+Percentile 99.900000: 20.486118ms
+Num Threads: 50
+TOTAL Requests: 50000
+TOTAL Duration: 1.739897689s
+AVG QPS: 28737.321921921353
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 516.828µs
+Percentile 90.000000: 3.770804ms
+Percentile 95.000000: 5.676932ms
+Percentile 99.000000: 10.393107ms
+Percentile 99.900000: 15.911456ms
+Num Threads: 50
+TOTAL Requests: 50000
+TOTAL Duration: 1.436758028s
+AVG QPS: 34800.57116479185
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 724.71µs
+Percentile 90.000000: 6.240805ms
+Percentile 95.000000: 8.856324ms
+Percentile 99.000000: 14.756281ms
+Percentile 99.900000: 23.562578ms
+Num Threads: 100
+TOTAL Requests: 500000
+TOTAL Duration: 11.799821129s
+AVG QPS: 42373.523677504556
+
+Percentile 50.000000: 508.464µs
+Percentile 90.000000: 3.991751ms
+Percentile 95.000000: 6.37376ms
+Percentile 99.000000: 13.019133ms
+Percentile 99.900000: 26.54819ms
+Num Threads: 50
+TOTAL Requests: 250000
+TOTAL Duration: 7.859525214s
+AVG QPS: 31808.537181696483
+
+=========================================
+Search With Memcache
+Percentile 50.000000: 571.673µs
+Percentile 90.000000: 3.580673ms
+Percentile 95.000000: 5.323845ms
+Percentile 99.000000: 10.653304ms
+Percentile 99.900000: 18.092846ms
+Num Threads: 50
+TOTAL Requests: 250000
+TOTAL Duration: 7.165764222s
+AVG QPS: 34888.114129189664

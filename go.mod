@@ -8,6 +8,7 @@ require (
 	github.com/QuangTung97/haversine v0.0.0-20221125042253-25243eb4abc4
 	github.com/elastic/go-elasticsearch/v7 v7.17.7
 	github.com/go-sql-driver/mysql v1.6.0
+	github.com/golang/protobuf v1.5.0
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/stretchr/testify v1.8.1
 	google.golang.org/protobuf v1.28.1
