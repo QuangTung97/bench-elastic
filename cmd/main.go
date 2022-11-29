@@ -535,8 +535,8 @@ func doSearchUsingDB(db *sqlx.DB) {
 }
 
 func doSearchUsingMemcache(client *memcache.Client) {
-	const numThreads = 100
-	const numLoops = 1000
+	const numThreads = 50
+	const numLoops = 100
 
 	start := time.Now()
 
@@ -586,18 +586,18 @@ func doSearchUsingMemcache(client *memcache.Client) {
 func main() {
 	//shops := loadShops("shops.csv")
 	//indexData(client, shops)
-	doSearchESByLoc()
+	//doSearchESByLoc()
 
 	//db := sqlx.MustConnect("mysql", "root:1@tcp(localhost:3306)/bench?parseTime=true")
 
-	//client, err := memcache.New("localhost:11211", 32)
-	//if err != nil {
-	//	panic(err)
-	//}
+	client, err := memcache.New("localhost:11211", 32)
+	if err != nil {
+		panic(err)
+	}
 
 	//writeDataToDB(db, shops)
 	//writeDataToMemcached(db, client)
 
 	//doSearchUsingDB(db)
-	//doSearchUsingMemcache(client)
+	doSearchUsingMemcache(client)
 }

@@ -99,6 +99,7 @@ AVG QPS: 2258.8971482411093
 
 // With Lat Random
 =========================================
+With Elastic
 Percentile 50.000000: 45.183553ms
 Percentile 90.000000: 51.752448ms
 Percentile 95.000000: 54.631986ms
@@ -109,6 +110,19 @@ Num Threads: 100
 TOTAL Requests: 10000
 TOTAL Duration: 4.624363307s
 AVG QPS: 2162.459853632776
+
+=========================================
+With Elastic
+Percentile 50.000000: 53.728763ms
+Percentile 90.000000: 59.102023ms
+Percentile 95.000000: 61.331079ms
+Percentile 99.000000: 68.530209ms
+Percentile 99.900000: 75.50888ms
+MAX CONNS PER HOST: 10
+Num Threads: 100
+TOTAL Requests: 10000
+TOTAL Duration: 5.441641123s
+AVG QPS: 1837.680908013823
 
 =========================================
 With ElasticSearch

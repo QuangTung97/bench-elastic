@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package bench.v1;
+
+option go_package = "bench_elastic/pb";
+
+message Shop {
+  int64 id = 1;
+  double lat = 2;
+  double lon = 3;
+}
+
+message ShopEntry {
+  repeated Shop shops = 1;
+}
