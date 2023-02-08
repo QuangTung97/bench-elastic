@@ -9,6 +9,7 @@ import (
 	"github.com/QuangTung97/haversine"
 	"github.com/elastic/go-elasticsearch/v7"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/golang/protobuf/proto"
 	"github.com/jmoiron/sqlx"
 	"io"
 	"math/rand"
@@ -230,11 +231,11 @@ func writeDataToMemcached(db *sqlx.DB, client *memcache.Client) {
 			})
 		}
 
-		entry := pb.ShopEntry{
+		entry := &pb.ShopEntry{
 			Shops: pbShops,
 		}
 
-		data, err := entry.Marshal()
+		data, err := proto.Marshal(entry)
 		if err != nil {
 			panic(err)
 		}
@@ -466,7 +467,8 @@ func searchWithMemcache(client *memcache.Client) {
 		}
 
 		var entry pb.ShopEntry
-		err = entry.Unmarshal(resp.Data)
+		err = proto.Unmarshal(resp.Data, &entry)
+
 		if err != nil {
 			panic(err)
 		}

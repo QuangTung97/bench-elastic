@@ -6,5 +6,17 @@ option go_package = "bench_elastic/pb";
 
 message Product {
   string sku = 1;
+  string name = 2;
 
+  string search_text = 3;
+
+  string field1 = 4;
+  string field2 = 5;
+  string field3 = 6;
+  string field4 = 7;
+  string field5 = 8;
+  string field6 = 9;
+  string field7 = 10;
+  string field8 = 11;
+  string field9 = 12;
 }
