@@ -291,12 +291,14 @@ func searchWithES(client *elasticsearch.Client) {
 }
 
 func getESClient(maxConnsPerHost int) (*elasticsearch.Client, func()) {
+	dialer := &net.Dialer{
+		Timeout:   30 * time.Second,
+		KeepAlive: 30 * time.Second,
+	}
+
 	transport := &http.Transport{
-		Proxy: http.ProxyFromEnvironment,
-		DialContext: (&net.Dialer{
-			Timeout:   30 * time.Second,
-			KeepAlive: 30 * time.Second,
-		}).DialContext,
+		Proxy:                 http.ProxyFromEnvironment,
+		DialContext:           dialer.DialContext,
 		ForceAttemptHTTP2:     true,
 		MaxIdleConns:          100,
 		IdleConnTimeout:       90 * time.Second,
@@ -558,7 +560,7 @@ func doSearchUsingDB(db *sqlx.DB) {
 }
 
 func doSearchUsingMemcache(client *memcache.Client) {
-	const numThreads = 50
+	const numThreads = 100
 	const numLoops = 5000
 
 	start := time.Now()

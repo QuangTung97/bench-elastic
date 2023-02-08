@@ -343,3 +343,17 @@ Num Threads: 50
 TOTAL Requests: 250000
 TOTAL Duration: 7.165764222s
 AVG QPS: 34888.114129189664
+
+=========================================
+//For Precision = 5
+=========================================
+Search With Memcache
+Percentile 50.000000: 2.462227ms
+Percentile 90.000000: 17.553343ms
+Percentile 95.000000: 23.951992ms
+Percentile 99.000000: 39.333664ms
+Percentile 99.900000: 63.490863ms
+Num Threads: 50
+TOTAL Requests: 250000
+TOTAL Duration: 32.102991717s
+AVG QPS: 7787.43620544292
