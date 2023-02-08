@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package bench.v1;
+
+option go_package = "bench_elastic/pb";
+
+message Product {
+  string sku = 1;
+
+}
