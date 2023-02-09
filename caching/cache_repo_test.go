@@ -70,7 +70,7 @@ func TestCacheRepo__Multi_Get_Products(t *testing.T) {
 
 				fnList := make([]func() (Product, error), 0, batchSize)
 				for m := 0; m < batchSize; m++ {
-					sku := fmt.Sprintf("SKU%08d", rand.Intn(2000))
+					sku := fmt.Sprintf("SKU%08d", rand.Intn(3000))
 					fn := repo.GetProduct(context.Background(), sku)
 					fnList = append(fnList, fn)
 				}

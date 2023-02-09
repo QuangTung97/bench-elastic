@@ -101,7 +101,7 @@ func TestElasticClient_Search_Alternate(t *testing.T) {
 			defer wg.Done()
 
 			for i := 0; i < loops; i++ {
-				searchText := randomSentence(1, 2)
+				searchText := randomSentence(2, 3)
 
 				start := time.Now()
 				client.Search(context.Background(), searchText, productIndex)

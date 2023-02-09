@@ -142,7 +142,7 @@ func (c *ElasticClient) Search(ctx context.Context, searchText string, index str
 {
   "track_total_hits": false,
   "from": 0,
-  "size": 40,
+  "size": 30,
   "query": {
     "match": {
 	  "search_text": %q
