@@ -69,11 +69,7 @@ func (f *CacheRepoFactory) NewRepo() *CacheRepo {
 					}
 					return product
 				}), nil
-			}, func(v Product) ProductKey {
-				return ProductKey{
-					SKU: v.Sku,
-				}
-			},
+			}, Product.GetKey,
 		),
 	)
 
@@ -82,6 +78,10 @@ func (f *CacheRepoFactory) NewRepo() *CacheRepo {
 		pipe:        pipe,
 		productItem: productItem,
 	}
+}
+
+func (f *CacheRepoFactory) Close() error {
+	return f.mc.Close()
 }
 
 func (r *CacheRepo) GetProduct(ctx context.Context, sku string) func() (Product, error) {

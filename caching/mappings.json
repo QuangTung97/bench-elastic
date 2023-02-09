@@ -1,0 +1,52 @@
+{
+  "mappings": {
+    "properties": {
+      "sku": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "index": false
+      },
+      "search_text": {
+        "type": "text"
+      },
+      "field1": {
+        "type": "text",
+        "index": false
+      },
+      "field2": {
+        "type": "text",
+        "index": false
+      },
+      "field3": {
+        "type": "text",
+        "index": false
+      },
+      "field4": {
+        "type": "text",
+        "index": false
+      },
+      "field5": {
+        "type": "text",
+        "index": false
+      },
+      "field6": {
+        "type": "text",
+        "index": false
+      },
+      "field7": {
+        "type": "text",
+        "index": false
+      },
+      "field8": {
+        "type": "text",
+        "index": false
+      },
+      "field9": {
+        "type": "text",
+        "index": false
+      }
+    }
+  }
+}
