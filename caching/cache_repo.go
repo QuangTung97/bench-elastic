@@ -2,6 +2,7 @@ package caching
 
 import (
 	"context"
+	"fmt"
 	"github.com/QuangTung97/go-memcache/memcache"
 	"github.com/QuangTung97/memproxy"
 	"github.com/QuangTung97/memproxy/item"
@@ -55,6 +56,8 @@ func (f *CacheRepoFactory) NewRepo() *CacheRepo {
 		unmarshalProduct,
 		item.NewMultiGetFiller[Product, ProductKey](
 			func(ctx context.Context, keys []ProductKey) ([]Product, error) {
+				fmt.Println("KEY LEN:", len(keys))
+
 				contents, err := f.repo.GetProducts(ctx, mapSlice(keys, func(x ProductKey) string {
 					return x.SKU
 				}))

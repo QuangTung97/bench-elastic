@@ -136,3 +136,35 @@ func (c *ElasticClient) IndexSimpleProducts(ctx context.Context, products []Simp
 	body, err := io.ReadAll(resp.Body)
 	fmt.Println(string(body), err)
 }
+
+func (c *ElasticClient) Search(ctx context.Context, searchText string, index string) {
+	query := fmt.Sprintf(`
+{
+  "track_total_hits": false,
+  "from": 0,
+  "size": 40,
+  "query": {
+    "match": {
+	  "search_text": %q
+    }
+  }
+}
+`, searchText)
+
+	var buf bytes.Buffer
+	buf.WriteString(query)
+	resp, err := c.client.Search(
+		c.client.Search.WithBody(&buf),
+		c.client.Search.WithIndex(index),
+		c.client.Search.WithContext(ctx),
+	)
+	if err != nil {
+		panic(err)
+	}
+	defer func() {
+		_ = resp.Body.Close()
+	}()
+
+	body, err := io.ReadAll(resp.Body)
+	fmt.Println(resp.Status(), err, len(body))
+}

@@ -1,0 +1,114 @@
+{
+  "health": "yellow",
+  "status": "open",
+  "index": "bench_full_products",
+  "uuid": "SCUikIfFSre9hIWdMckUDA",
+  "pri": "1",
+  "rep": "1",
+  "docs.count": "4000000",
+  "docs.deleted": "0",
+  "store.size": "5.8gb",
+  "pri.store.size": "5.8gb"
+}
+{
+  "health": "yellow",
+  "status": "open",
+  "index": "bench_products",
+  "uuid": "kpPy4kuqTFqYInRbE6MLLA",
+  "pri": "1",
+  "rep": "1",
+  "docs.count": "4000000",
+  "docs.deleted": "0",
+  "store.size": "885.1mb",
+  "pri.store.size": "885.1mb"
+}
+
+// track_total_hits = true
+FULL: 0.500000 122.916239ms
+SIMPLE: 0.500000 114.226611ms
+FULL: 0.900000 178.474323ms
+SIMPLE: 0.900000 163.94017ms
+FULL: 0.950000 192.646697ms
+SIMPLE: 0.950000 174.592245ms
+
+
+// track_total_hits = true
+// offset = 0
+// size = 20
+// query from 10 => 20
+FULL: 0.500000 133.153695ms
+SIMPLE: 0.500000 120.220722ms
+FULL: 0.900000 192.700895ms
+SIMPLE: 0.900000 173.218413ms
+FULL: 0.950000 211.678616ms
+SIMPLE: 0.950000 184.383731ms
+
+
+// track_total_hits = true
+// offset = 0
+// size = 20
+// query from 2 => 4
+FULL: 0.500000 38.154729ms
+SIMPLE: 0.500000 31.120539ms
+FULL: 0.900000 61.527833ms
+SIMPLE: 0.900000 49.504471ms
+FULL: 0.950000 68.268567ms
+SIMPLE: 0.950000 57.342506ms
+
+// track_total_hits = true
+// offset = 0
+// size = 40
+// query from 2 => 4
+FULL: 0.500000 43.963735ms
+SIMPLE: 0.500000 34.465629ms
+FULL: 0.900000 72.214588ms
+SIMPLE: 0.900000 56.07597ms
+FULL: 0.950000 80.94394ms
+SIMPLE: 0.950000 62.023519ms
+
+// track_total_hits = false
+// offset = 0
+// size = 20
+// query from 2 => 4
+FULL: 0.500000 38.701566ms
+SIMPLE: 0.500000 33.05333ms
+FULL: 0.900000 67.181546ms
+SIMPLE: 0.900000 56.203161ms
+FULL: 0.950000 80.095331ms
+SIMPLE: 0.950000 66.27518ms
+
+
+// track_total_hits = false
+// offset = 0
+// size = 20
+// query from 1 => 2
+FULL: 0.500000 27.087635ms
+SIMPLE: 0.500000 16.861498ms
+FULL: 0.900000 50.07932ms
+SIMPLE: 0.900000 29.711108ms
+FULL: 0.950000 57.363084ms
+SIMPLE: 0.950000 34.380943ms
+
+// track_total_hits = false
+// offset = 0
+// size = 40
+// query from 1 => 2
+FULL: 0.500000 35.099428ms
+SIMPLE: 0.500000 22.162134ms
+FULL: 0.900000 63.6085ms
+SIMPLE: 0.900000 39.000703ms
+FULL: 0.950000 73.000294ms
+SIMPLE: 0.950000 44.752535ms
+
+
+// Number of Conns = 4
+// Threads Count = 10
+// Batch Size = 40
+// loops = 2000
+// qps = loops * thread count / 1.86s  * batch_size
+// = 430107.526882
+// len(content_data) ~ 2KB
+CACHE: 0.500000 722.823µs
+CACHE: 0.900000 1.510489ms
+CACHE: 0.950000 1.897398ms
+CACHE: 0.990000 3.361528ms
