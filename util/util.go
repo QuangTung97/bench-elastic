@@ -87,5 +87,5 @@ func InsertBulkElastic[T any](
 	}()
 
 	body, err := io.ReadAll(resp.Body)
-	fmt.Println(string(body), err)
+	fmt.Println(len(body), err)
 }

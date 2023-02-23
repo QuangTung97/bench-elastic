@@ -17,7 +17,7 @@ func getAttr(i int) string {
 }
 
 func randomAttr() string {
-	return getAttr(rand.Intn(1000))
+	return getAttr(rand.Intn(50))
 }
 
 var globalSeed int64
@@ -32,7 +32,7 @@ func TestInsertSimple(t *testing.T) {
 
 	util.CreateBatch[SimpleProduct](
 		1000,
-		500000,
+		1000000,
 		func(i int) SimpleProduct {
 			return SimpleProduct{
 				Sku:          getSku(i),
@@ -48,7 +48,7 @@ func TestInsertNested(t *testing.T) {
 
 	util.CreateBatch[Product](
 		1000,
-		500000,
+		1000000,
 		func(i int) Product {
 			return Product{
 				Sku: getSku(i),
