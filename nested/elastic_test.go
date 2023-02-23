@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"testing"
+	"time"
 )
 
 func getSku(i int) string {
@@ -17,6 +18,13 @@ func getAttr(i int) string {
 
 func randomAttr() string {
 	return getAttr(rand.Intn(1000))
+}
+
+var globalSeed int64
+
+func init() {
+	globalSeed = time.Now().UnixNano()
+	fmt.Println("SEED:", globalSeed)
 }
 
 func TestInsertSimple(t *testing.T) {
@@ -55,5 +63,33 @@ func TestInsertNested(t *testing.T) {
 			}
 		},
 		c.InsertNested,
+	)
+}
+
+func TestSearch_Simple(t *testing.T) {
+	rand.Seed(globalSeed)
+
+	c := NewElasticClient()
+
+	util.BenchConcurrent(
+		200,
+		100,
+		func() {
+			c.SearchSimple(randomAttr())
+		},
+	)
+}
+
+func TestSearch_Nested(t *testing.T) {
+	rand.Seed(globalSeed)
+
+	c := NewElasticClient()
+
+	util.BenchConcurrent(
+		200,
+		100,
+		func() {
+			c.SearchNested(randomAttr())
+		},
 	)
 }

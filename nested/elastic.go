@@ -2,7 +2,10 @@ package nested
 
 import (
 	"bench_elastic/util"
+	"bytes"
+	"fmt"
 	"github.com/elastic/go-elasticsearch/v7"
+	"io"
 	"net"
 	"net/http"
 	"time"
@@ -79,4 +82,67 @@ func (c *ElasticClient) InsertNested(products []Product) {
 			return e.Sku
 		},
 	)
+}
+
+func (c *ElasticClient) SearchSimple(
+	attr string,
+) {
+	query := fmt.Sprintf(`
+{
+  "query": {
+    "term": {
+      "attribute_ids": %q
+    }
+  },
+  "size": 20
+}
+`, attr)
+
+	var buf bytes.Buffer
+	buf.WriteString(query)
+
+	resp, err := c.client.Search(c.client.Search.WithBody(&buf), c.client.Search.WithIndex(simpleProductIndex))
+	if err != nil {
+		panic(err)
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	_, err = io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func (c *ElasticClient) SearchNested(
+	attr string,
+) {
+	query := fmt.Sprintf(`
+{
+  "query": {
+    "nested": {
+      "path": "attributes",
+      "query": {
+        "term": {
+          "attributes.id": %q
+        }
+      }
+    }
+  },
+  "size": 20
+}
+`, attr)
+
+	var buf bytes.Buffer
+	buf.WriteString(query)
+
+	resp, err := c.client.Search(c.client.Search.WithBody(&buf), c.client.Search.WithIndex(nestedProductIndex))
+	if err != nil {
+		panic(err)
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	_, err = io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
 }
