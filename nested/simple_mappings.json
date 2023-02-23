@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "properties": {
+      "sku": {
+        "type": "keyword"
+      },
+      "attribute_ids": {
+        "type": "keyword"
+      }
+    }
+  }
+}

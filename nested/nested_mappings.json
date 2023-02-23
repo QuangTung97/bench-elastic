@@ -1,0 +1,17 @@
+{
+  "mappings": {
+    "properties": {
+      "sku": {
+        "type": "keyword"
+      },
+      "attributes": {
+        "type": "nested",
+        "properties": {
+          "id": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}

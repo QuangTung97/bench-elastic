@@ -111,6 +111,21 @@ SIMPLE: 0.900000 38.497583ms
 FULL: 0.950000 70.012673ms
 SIMPLE: 0.950000 43.616977ms
 
+// track_total_hits = false
+// offset = 0
+// size = 30
+// query from 2 => 3
+// total time = 9.146
+// num threads = 10 + 10
+// num loops = 200
+
+FULL: 0.500000 43.009341ms
+SIMPLE: 0.500000 31.11038ms
+FULL: 0.900000 70.843403ms
+SIMPLE: 0.900000 48.127874ms
+FULL: 0.950000 79.570625ms
+SIMPLE: 0.950000 53.645019ms
+
 
 // Number of Conns = 4
 // Threads Count = 10
