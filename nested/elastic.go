@@ -84,6 +84,22 @@ func (c *ElasticClient) InsertNested(products []Product) {
 	)
 }
 
+func (c *ElasticClient) doSearch(index string, query string) {
+	var buf bytes.Buffer
+	buf.WriteString(query)
+
+	resp, err := c.client.Search(c.client.Search.WithBody(&buf), c.client.Search.WithIndex(index))
+	if err != nil {
+		panic(err)
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if _, err := io.ReadAll(resp.Body); err != nil {
+		panic(err)
+	} else {
+	}
+}
+
 func (c *ElasticClient) SearchSimple(
 	attr string,
 ) {
@@ -97,20 +113,7 @@ func (c *ElasticClient) SearchSimple(
   "size": 20
 }
 `, attr)
-
-	var buf bytes.Buffer
-	buf.WriteString(query)
-
-	resp, err := c.client.Search(c.client.Search.WithBody(&buf), c.client.Search.WithIndex(simpleProductIndex))
-	if err != nil {
-		panic(err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	_, err = io.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
+	c.doSearch(simpleProductIndex, query)
 }
 
 func (c *ElasticClient) SearchNested(
@@ -132,17 +135,44 @@ func (c *ElasticClient) SearchNested(
 }
 `, attr)
 
-	var buf bytes.Buffer
-	buf.WriteString(query)
+	c.doSearch(nestedProductIndex, query)
+}
 
-	resp, err := c.client.Search(c.client.Search.WithBody(&buf), c.client.Search.WithIndex(nestedProductIndex))
-	if err != nil {
-		panic(err)
-	}
-	defer func() { _ = resp.Body.Close() }()
+func (c *ElasticClient) AggregateSimple() {
+	query := fmt.Sprintf(`
+{
+  "aggs": {
+    "attrs": {
+      "terms": {
+        "field": "attribute_ids",
+        "size": 20
+      }
+    }
+  }
+}
+`)
+	c.doSearch(simpleProductIndex, query)
+}
 
-	_, err = io.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
+func (c *ElasticClient) AggregateNested() {
+	query := fmt.Sprintf(`
+{
+  "aggs": {
+    "attrs": {
+      "nested": {
+        "path": "attributes"
+      },
+      "aggs": {
+        "attr_id": {
+          "terms": {
+            "field": "attributes.id",
+            "size": 20
+          }
+        }
+      }
+    }
+  }
+}
+`)
+	c.doSearch(nestedProductIndex, query)
 }

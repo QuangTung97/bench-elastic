@@ -73,7 +73,7 @@ func TestSearch_Simple(t *testing.T) {
 
 	util.BenchConcurrent(
 		200,
-		100,
+		10,
 		func() {
 			c.SearchSimple(randomAttr())
 		},
@@ -87,9 +87,37 @@ func TestSearch_Nested(t *testing.T) {
 
 	util.BenchConcurrent(
 		200,
-		100,
+		10,
 		func() {
 			c.SearchNested(randomAttr())
+		},
+	)
+}
+
+func TestAggregate_Simple(t *testing.T) {
+	rand.Seed(globalSeed)
+
+	c := NewElasticClient()
+
+	util.BenchConcurrent(
+		20,
+		10,
+		func() {
+			c.AggregateSimple()
+		},
+	)
+}
+
+func TestAggregate_Nested(t *testing.T) {
+	rand.Seed(globalSeed)
+
+	c := NewElasticClient()
+
+	util.BenchConcurrent(
+		20,
+		10,
+		func() {
+			c.AggregateNested()
 		},
 	)
 }
