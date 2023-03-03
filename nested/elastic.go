@@ -222,4 +222,39 @@ const searchAndAggSimple = `
 `
 
 const searchAndAggNested = `
+{
+  "query": {
+    "nested": {
+      "path": "attributes",
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "attributes.id": "ATTR00009"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+    "aggs": {
+    "attrs": {
+      "nested": {
+        "path": "attributes"
+      },
+      "aggs": {
+        "attr_id": {
+          "terms": {
+            "field": "attributes.id",
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0,
+  "profile": true
+}
 `

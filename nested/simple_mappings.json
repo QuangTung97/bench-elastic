@@ -5,7 +5,8 @@
         "type": "keyword"
       },
       "attribute_ids": {
-        "type": "keyword"
+        "type": "keyword",
+        "eager_global_ordinals": true
       }
     }
   }
