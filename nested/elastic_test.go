@@ -73,7 +73,7 @@ func TestSearch_Simple(t *testing.T) {
 
 	util.BenchConcurrent(
 		200,
-		10,
+		100,
 		func() {
 			c.SearchSimple(randomAttr())
 		},
@@ -87,7 +87,7 @@ func TestSearch_Nested(t *testing.T) {
 
 	util.BenchConcurrent(
 		200,
-		10,
+		100,
 		func() {
 			c.SearchNested(randomAttr())
 		},

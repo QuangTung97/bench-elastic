@@ -106,10 +106,19 @@ func (c *ElasticClient) SearchSimple(
 	query := fmt.Sprintf(`
 {
   "query": {
-    "term": {
-      "attribute_ids": %q
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "attribute_ids": %q
+          }
+        }
+      ]
     }
   },
+  "_source": false,
+  "stored_fields": "_none_",
+  "docvalue_fields": ["sku"],
   "size": 20
 }
 `, attr)
@@ -125,12 +134,21 @@ func (c *ElasticClient) SearchNested(
     "nested": {
       "path": "attributes",
       "query": {
-        "term": {
-          "attributes.id": %q
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "attributes.id": %q
+              }
+            }
+          ]
         }
       }
     }
   },
+  "_source": false,
+  "stored_fields": "_none_",
+  "docvalue_fields": ["sku"],
   "size": 20
 }
 `, attr)
@@ -176,3 +194,32 @@ func (c *ElasticClient) AggregateNested() {
 `)
 	c.doSearch(nestedProductIndex, query)
 }
+
+const searchAndAggSimple = `
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "attribute_ids": "ATTR00009"
+          }
+        }
+      ]
+    }
+  },
+  "size": 0,
+  "aggs": {
+    "attrs": {
+      "terms": {
+        "field": "attribute_ids",
+        "size": 20
+      }
+    }
+  },
+  "profile": true
+}
+`
+
+const searchAndAggNested = `
+`
